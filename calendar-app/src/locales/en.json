@@ -1,0 +1,19 @@
+{
+    "user.lable": "Username",
+    "password.lable": "Password",
+    "login.title": "Log In",
+    "page.title": "The Best Calendar App",
+    "ID": "ID",
+    "Nombre": "Name",
+    "Modelo": "Model",
+    "company.th": "Manufacturer Company",
+    "robot.select":"Select a robot to see the detail",
+    "loading.details": "Loading details...",
+    "year.manufacture": "Year of Manufacture",
+    "processing.capacity": "Processing Capacity",
+    "humor": "Humor",
+    "Cancelar": "Cancel",
+    "Ingresar": "Enter",
+    "alertmessage": "Authentication error. Please check your credentials",
+    "register.title": "Sign Up"
+}

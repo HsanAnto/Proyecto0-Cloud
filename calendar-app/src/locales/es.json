@@ -1,0 +1,18 @@
+{
+    "user.label": "Nombre de usuario",
+    "password.label": "Contraseña",
+    "login.title": "Inicio de Sesión",
+    "page.title": "La Mejor App de Calendario",
+    "ID": "ID",
+    "Nombre": "Nombre",
+    "Modelo": "Modelo",
+    "company.th": "Empresa Fabricante",
+    "robot.select": "Seleccione un robot para ver detalles",
+    "loading.details": "Cargando detalles...",
+    "year.manufacture": "Año de Fabricación",
+    "processing.capacity": "Capacidad de Procesamiento",
+    "humor": "Humor",
+    "Cancelar": "Cancelar",
+    "Ingresar": "Ingresar",
+    "register.title": "Registrarse"
+}

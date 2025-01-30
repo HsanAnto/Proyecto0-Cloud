@@ -1,9 +1,9 @@
-from flaskr import create_app
+from backend import create_app
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
-from flaskr.models import db
+from .models import db
 from flask_cors import CORS
-from flaskr.views import (
+from .views import (
     CreateUser,
     LoginUser,
     CreateTask,

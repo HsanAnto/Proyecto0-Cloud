@@ -2,12 +2,14 @@ version: '3.8'
 
 services:
   web:
-    build: .
+    build:
+      context: ./flaskr
+      dockerfile: Dockerfile
     container_name: flask_app
     ports:
       - "8080:8080"
     env_file:
-      - .env
+      - ./flaskr/.env
     depends_on:
       db:
         condition: service_healthy
@@ -26,6 +28,15 @@ services:
       interval: 5s
       timeout: 10s
       retries: 20
+  
+  frontend:
+    build:
+      context: ./calendar-app
+    container_name: react_frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - web
 
 
 

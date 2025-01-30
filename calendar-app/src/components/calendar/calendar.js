@@ -26,6 +26,8 @@ function Calendar() {
     const [editedDescription, setEditedDescription] = useState('');
     const [editedDueDate, setEditedDueDate] = useState('');
     const [editedState, setEditedState] = useState('');
+    const profileImage = localStorage.getItem('profile_image');
+
 
 
 
@@ -335,6 +337,7 @@ function Calendar() {
                     <span className="calendar-white-letter">E</span>
                     <span className="calendar-colored-letter">C</span>
                 </h1>
+                <img src={profileImage} alt="Profile" className="profile-image" />
             </div>
             <div className="divider"></div>
 

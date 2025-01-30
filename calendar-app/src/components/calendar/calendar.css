@@ -12,6 +12,11 @@
 /* Header */
 .calendar-header {
     margin-top: 50px;
+    display: flex;
+    justify-content: center; /* Mantiene el logo centrado */
+    align-items: center;
+    position: relative;
+    width: 100%;
 }
 
 .calendar-logo {
@@ -26,6 +31,18 @@
 
 .calendar-colored-letter {
     color: #C98A6A;
+}
+
+/* Imagen de perfil */
+.profile-image {
+    width: 4%;  /* Tamaño del círculo */
+    height: 50%;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    right: 5%;
+    top: 50%; 
+    transform: translateY(-70%);
 }
 
 /* Divider */

@@ -32,7 +32,7 @@ services:
   frontend:
     build:
       context: ./calendar-app
-    container_name: react_frontend
+    container_name: calendar_app
     ports:
       - "3000:3000"
     depends_on:

@@ -4,10 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import './register.css';
 import userIcon from '../../statics/user.png';
 import lockIcon from '../../statics/lock.png';
+import photoIcon from '../../statics/gallery.png';
 
 function Register() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [profile_image, setProfile_image] = useState('');
     const [error, setError] = useState(false);
     const navigate = useNavigate();
     const BACKURL = process.env.REACT_APP_BACKURL;
@@ -19,7 +21,7 @@ function Register() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ username: username, password: password })
+                body: JSON.stringify({ username: username, password: password, profile_image: profile_image })
             });
 
             if (response.status === 201) {
@@ -63,6 +65,15 @@ function Register() {
                             placeholder="Password" 
                             value={password}
                             onChange={e => setPassword(e.target.value)}
+                        />
+                    </div>
+                    <div className="signup-input-container">
+                        <img src={photoIcon} alt="ProfilePhoto" className="signup-icon" />
+                        <input 
+                            type="text" 
+                            placeholder="Profile Image" 
+                            value={profile_image}
+                            onChange={e => setProfile_image(e.target.value)}
                         />
                     </div>
                     {error && <div className="signup-error-message">Registration failed.</div>}

@@ -24,6 +24,7 @@ function Login() {
             if (response.status === 200) {
                 const data = await response.json();
                 localStorage.setItem('token', data.access_token);
+                localStorage.setItem('profile_image', data.profile_image);
                 navigate("/calendar");
             } else {
                 setError(true);

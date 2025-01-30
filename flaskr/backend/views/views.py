@@ -43,7 +43,7 @@ class LoginUser(Resource):
         
         if user and check_password_hash(user.password, password):
             access_token = create_access_token(identity=str(user.id))
-            return {'access_token': access_token}, 200
+            return {'access_token': access_token, 'profile_image': user.profile_image}, 200
         else:
             return {'message': 'Credenciales inválidas'}, 401
 

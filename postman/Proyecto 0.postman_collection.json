@@ -1,0 +1,2038 @@
+{
+	"info": {
+		"_postman_id": "39dc33f4-c55a-4f49-a5c2-6dbeb144d33f",
+		"name": "Proyecto 0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38629883"
+	},
+	"item": [
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "Crear Usuario",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Estado de la respuesta es 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"El cuerpo contiene el mensaje esperado\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Usuario creado exitosamente\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"usuario_prueba\",\r\n  \"password\": \"Contraseña123!\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/usuarios",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear Usuario",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"usuario_prueba\",\r\n  \"password\": \"Contraseña123!\",\r\n  \"profile_image\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvW3dC9Vm5QdVTLw8nzF3A8XF8veYIpzJ1Cg&s\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/usuarios",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"usuarios"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Usuario creado exitosamente\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Crear Usuario Repetido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Estado de la respuesta es 409\", function () {\r",
+									"    pm.response.to.have.status(409);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"El cuerpo contiene el mensaje esperado\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"El usuario ya existe\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"usuario_prueba\",\r\n  \"password\": \"Contraseña123!\",\r\n  \"profile_image\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvW3dC9Vm5QdVTLw8nzF3A8XF8veYIpzJ1Cg&s\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/usuarios",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear Usuario Repetido",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"usuario_prueba2\",\r\n  \"profile_image\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvW3dC9Vm5QdVTLw8nzF3A8XF8veYIpzJ1Cg&s\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/usuarios",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"usuarios"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"message\": \"El usuario ya existe\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Crear Usuario Sin Datos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Estado de la respuesta es 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"El cuerpo contiene el mensaje esperado\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Faltan datos requeridos\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"usuario_prueba2\",\r\n  \"profile_image\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvW3dC9Vm5QdVTLw8nzF3A8XF8veYIpzJ1Cg&s\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/usuarios",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear Usuario Sin Datos",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"usuario_prueba2\",\r\n  \"profile_image\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvW3dC9Vm5QdVTLw8nzF3A8XF8veYIpzJ1Cg&s\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/usuarios",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"usuarios"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"message\": \"Faltan datos requeridos\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "LogIn",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Estado de la respuesta es 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"La respuesta contiene el access_token\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"access_token\");\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"jwt_token\", pm.response.json().access_token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"usuario_prueba\",\r\n  \"password\": \"Contraseña123!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/usuarios/iniciar-sesion",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"usuarios",
+								"iniciar-sesion"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "LogIn",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"usuario_prueba\",\r\n  \"password\": \"Contraseña123!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/usuarios/iniciar-sesion",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"usuarios",
+										"iniciar-sesion"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczNzgyNTU5MSwianRpIjoiMmY3MTdiYjAtMGVhOS00MTUyLTk1MDUtZjQ3ZTAyYjc5YTEzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MSwibmJmIjoxNzM3ODI1NTkxLCJjc3JmIjoiNGQ0NWExMzktM2YyYi00ZDAzLTg0MjQtOTgwOTc3NWI5NGMyIiwiZXhwIjoxNzM3ODI2NDkxfQ.0nHlKffnwUvzi5CiGnozuSf9jCbuqMXU3yxeFiH1sVg\"\n}"
+						}
+					]
+				},
+				{
+					"name": "LogIn Credenciales Invalidas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Estado de la respuesta es 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"El cuerpo contiene el mensaje esperado\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Credenciales inválidas\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"usuario_prueba\",\r\n  \"password\": \"Contraseña123!x\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/usuarios/iniciar-sesion",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"usuarios",
+								"iniciar-sesion"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "LogIn Credenciales Invalidas",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"usuario_prueba\",\r\n  \"password\": \"Contraseña123!x\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/usuarios/iniciar-sesion",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"usuarios",
+										"iniciar-sesion"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Credenciales inválidas\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Esta carpeta contiene pruebas para los endpoints relacionados con la gestión de usuarios en la aplicación. Incluye operaciones como creación de usuarios, inicio de sesión y autenticación con tokens JWT. Las pruebas verifican que los usuarios se puedan registrar e iniciar sesión correctamente"
+		},
+		{
+			"name": "Categoria",
+			"item": [
+				{
+					"name": "Crear Categoria",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Estado de la respuesta es 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de éxito en la respuesta\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Categoría creada exitosamente\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Matemáticas\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/categorias",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear Categoria",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Matemáticas\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/categorias",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"categorias"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Categoría creada exitosamente\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Crear Categoria Sin Nombre",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Estado de la respuesta es 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error en la respuesta\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"El nombre de la categoría es requerido\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/categorias",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear Categoria",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/categorias",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"categorias"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"El nombre de la categoría es requerido\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Obtener Categorias",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Estado de la respuesta es 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"La respuesta contiene una lista\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Cada categoría tiene las claves id y name\", function () {\r",
+									"        var jsonData = pm.response.json();\r",
+									"        jsonData.forEach(function (category) {\r",
+									"            pm.expect(category).to.have.property(\"id\");\r",
+									"            pm.expect(category).to.have.property(\"name\");\r",
+									"        });\r",
+									"    });\r",
+									"\r",
+									"pm.test(\"Guardar el id de la primera categoría en una variable de entorno\", function () {\r",
+									"        var jsonData = pm.response.json();\r",
+									"        var firstCategoryId = jsonData[0].id;\r",
+									"        pm.environment.set(\"categoria_id\", firstCategoryId);\r",
+									"        console.log(\"ID de la primera categoría guardado en el entorno: \" + firstCategoryId);\r",
+									"    });"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/categorias",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtener Categorias",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/categorias",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"categorias"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Matemáticas\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Eliminar Categoria",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Estado de la respuesta es 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje en la respuesta\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Categoría eliminada exitosamente\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/categorias/{{categoria_id}}",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"categorias",
+								"{{categoria_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Eliminar Categoria",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/categorias/{{categoria_id}}",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"categorias",
+										"{{categoria_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"message\": \"Categoría eliminada exitosamente\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Eliminar Categoria Que No Existe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Estado de la respuesta es 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error en la respuesta\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Categoría no encontrada\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/categorias/{{categoria_id}}",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"categorias",
+								"{{categoria_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Eliminar Categoria Que No Existe",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/categorias/{{categoria_id}}",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"categorias",
+										"{{categoria_id}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Categoría no encontrada\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Eliminar Categoria Con Tarea Asociada",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Estado de la respuesta es 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error \", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"La categoría no se puede eliminar porque tiene tareas asociadas\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/categorias/{{categoria_id}}",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"categorias",
+								"{{categoria_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Eliminar Categoria Con Tarea Asociada",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/categorias/{{categoria_id}}",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"categorias",
+										"{{categoria_id}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"message\": \"La categoría no se puede eliminar porque tiene tareas asociadas\"\r\n}"
+						}
+					]
+				}
+			],
+			"description": "Esta carpeta agrupa las pruebas para los endpoints relacionados con las categorías. Incluye operaciones para la creación, consulta, eliminación y validación de restricciones, como evitar la eliminación de categorías que tienen tareas asociadas. Estas pruebas aseguran que las categorías sean gestionadas correctamente y manejen errores comunes como categorías inexistentes."
+		},
+		{
+			"name": "Tareas",
+			"item": [
+				{
+					"name": "Crear Tarea",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Estado de la respuesta es 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de éxito en la respuesta\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Tarea creada exitosamente\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"description\": \"Completar el informe del proyecto\",\r\n  \"due_date\": \"2025-02-01\",\r\n  \"category_id\": {{categoria_id}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/tareas",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"tareas"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear Tarea",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"description\": \"Completar el informe del proyecto\",\r\n  \"due_date\": \"2025-02-01\",\r\n  \"category_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/tareas",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"tareas"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"message\": \"Tarea creada exitosamente\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Crear Tarea Sin Descripcion",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Estado de la respuesta es 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error en la respuesta\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"La descripción es requerida\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"due_date\": \"2025-02-01\",\r\n  \"category_id\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/tareas",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"tareas"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear Tarea Sin Descripcion",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"due_date\": \"2025-02-01\",\r\n  \"category_id\": 1\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/tareas",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"tareas"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"La descripción es requerida\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Crear Tarea Con Fecha Finalizacion Invalida",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Estado de la respuesta es 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error en la respuesta\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"La fecha de vencimiento debe ser mayor a la fecha actual\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"description\": \"Revisar el plan de trabajo\",\r\n  \"due_date\": \"2023-01-01\",\r\n  \"category_id\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/tareas",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"tareas"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear Tarea Con Fecha Finalizacion Invalida",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"description\": \"Revisar el plan de trabajo\",\r\n  \"due_date\": \"2023-01-01\",\r\n  \"category_id\": 1\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/tareas",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"tareas"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"message\": \"La fecha de vencimiento debe ser mayor a la fecha actual\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Crear Tarea Sin Categoria",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Estado de la respuesta es 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error en la respuesta\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"La tarea debe pertenecer a una categoria\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"description\": \"Actualizar el reporte semanal\",\r\n  \"due_date\": \"2025-02-01\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/tareas",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"tareas"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear Tarea Sin Categoria",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"description\": \"Actualizar el reporte semanal\",\r\n  \"due_date\": \"2025-02-01\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/tareas",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"tareas"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"La tarea debe pertenecer a una categoria\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Crear Tarea Con Categoria Invalida",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Estado de la respuesta es 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error en la respuesta\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"La categoria a la que intenta agregar la tarea no existe\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"description\": \"Completar el informe del proyecto\",\r\n  \"due_date\": \"2025-02-01\",\r\n  \"category_id\": 999\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/tareas",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"tareas"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear Tarea Con Categoria Invalida",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"description\": \"Completar el informe del proyecto\",\r\n  \"due_date\": \"2025-02-01\",\r\n  \"category_id\": 999\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/tareas",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"tareas"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"La categoria a la que intenta agregar la tarea no existe\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Obtener Tareas de un Usuario",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Estado de la respuesta es 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"La respuesta contiene una lista\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an(\"array\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Guardar el id de la primera tarea en una variable de entorno\", function () {\r",
+									"        var jsonData = pm.response.json();\r",
+									"        var firstTaskId = jsonData[0].id;\r",
+									"        pm.environment.set(\"tarea_id\", firstTaskId);\r",
+									"    });"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/usuarios/tareas",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"usuarios",
+								"tareas"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtener Tareas de un Usuario",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/usuarios/tareas",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"usuarios",
+										"tareas"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "[\r\n    {\r\n        \"id\": 1,\r\n        \"description\": \"Completar el informe del proyecto\",\r\n        \"state\": \"Sin Empezar\",\r\n        \"created_at\": \"2025-01-25 21:42:33\",\r\n        \"due_date\": \"2025-02-01\",\r\n        \"category_id\": 1\r\n    }\r\n]"
+						}
+					]
+				},
+				{
+					"name": "Actualizar Tarea",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Estado de la respuesta es 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de éxito en la respuesta\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Tarea actualizada exitosamente\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"description\": \"Hacer almuerzo\",\r\n  \"due_date\": \"2025-12-01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/tareas/{{tarea_id}}",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"tareas",
+								"{{tarea_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Actualizar Tarea",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"description\": \"Hacer almuerzo\",\r\n  \"due_date\": \"2025-12-01\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/tareas/{{tarea_id}}",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"tareas",
+										"{{tarea_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"message\": \"Tarea actualizada exitosamente\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Actualizar Tarea Fecha Invalida",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Estado de la respuesta es 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error en la respuesta\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"La fecha de vencimiento debe ser mayor a la fecha actual\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"description\": \"Hacer almuerzo\",\r\n  \"due_date\": \"2023-12-01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/tareas/{{tarea_id}}",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"tareas",
+								"{{tarea_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Actualizar Tarea Fecha Invalida",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"description\": \"Hacer almuerzo\",\r\n  \"due_date\": \"2023-12-01\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/tareas/{{tarea_id}}",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"tareas",
+										"{{tarea_id}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"La fecha de vencimiento debe ser mayor a la fecha actual\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Actualizar Tarea No Encontrada",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Estado de la respuesta es 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error en la respuesta\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Tarea no encontrada\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"description\": \"Hacer almuerzo\",\r\n  \"due_date\": \"2023-12-01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/tareas/99999",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"tareas",
+								"99999"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Actualizar Tarea No Encontrada",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"description\": \"Hacer almuerzo\",\r\n  \"due_date\": \"2023-12-01\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/tareas/99999",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"tareas",
+										"99999"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Tarea no encontrada\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Eliminar Tarea",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Estado de la respuesta es 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de éxito en la respuesta\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Tarea eliminada exitosamente\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/tareas/{{tarea_id}}",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"tareas",
+								"{{tarea_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Eliminar Tarea",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/tareas/{{tarea_id}}",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"tareas",
+										"{{tarea_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Tarea eliminada exitosamente\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Eliminar Tarea No Encontrada",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Estado de la respuesta es 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error en la respuesta\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Tarea no encontrada\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/tareas/99999",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"tareas",
+								"99999"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Eliminar Tarea No Encontrada",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/tareas/99999",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"tareas",
+										"99999"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Tarea no encontrada\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Esta carpeta contiene pruebas para los endpoints relacionados con la gestión de tareas. Incluye la creación, consulta, actualización y eliminación de tareas, así como la validación de restricciones como fechas de vencimiento invalidas. Las pruebas aseguran que las tareas se gestionen adecuadamente y se validen casos de uso comunes, como tareas inexistentes o errores en la actualización."
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Url",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "jwt_token",
+			"value": "xxx",
+			"type": "string"
+		}
+	]
+}
